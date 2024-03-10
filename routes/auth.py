@@ -41,7 +41,7 @@ async def signup(schema: User):
 
 
 @router.post('/signin')
-async def signup(schema: UserAuth, res: Response):
+async def signin(schema: UserAuth, res: Response):
     SHA256 = hashlib.sha256()
     SHA256.update(str(schema.user_password).encode())
     schema.user_password = SHA256.hexdigest()
@@ -66,7 +66,7 @@ async def signup(schema: UserAuth, res: Response):
 
 
 @router.post('/signout')
-async def signup(req: Request, res: Response):
+async def signout(req: Request, res: Response):
     middlewareToken(req)
     res.delete_cookie(key='__token')
     res.delete_cookie(key='__id')
